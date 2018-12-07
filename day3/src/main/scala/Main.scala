@@ -1,6 +1,5 @@
 package advent
 
-import scala.collection.SortedMap
 import scala.util.parsing.combinator._
 
 import shapeless._

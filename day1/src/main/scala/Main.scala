@@ -5,8 +5,6 @@ import scala.util.parsing.combinator._
 
 import shapeless._
 import shapeless.tag.@@
-import newtype._
-
 
 
 object Day1 extends RegexParsers {
@@ -21,9 +19,6 @@ object Day1 extends RegexParsers {
     override def toString: String =
       if (toInt <= 0) toInt.toString else ("+" + toInt.toString)
     def apply(target: Frequency): Frequency = Frequency(target+this.toInt)
-  }
-  object FrequencyChange {
-    def between(start: Frequency, end: Frequency) = FrequencyChange(end - start)
   }
   
   
@@ -107,8 +102,6 @@ object Day1 extends RegexParsers {
         println("Result of Part 2: " + part2)
       }
     }
-    
-    
     println("Bye!")
   }
   

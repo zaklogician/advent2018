@@ -5,12 +5,12 @@ import org.scalacheck.Properties
 import org.scalacheck.Gen._
 import org.scalacheck.Arbitrary._
 
-import scala.util.parsing.combinator._
 import advent.Day2._
 
 object Test extends Properties("Main") {
   
   // GENERATORS //
+  
   val genAlphabetical: Gen[Char] = Gen.oneOf(ALPHABET)
   
   val genBoxID: Gen[BoxID] = for {

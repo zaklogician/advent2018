@@ -28,7 +28,6 @@ object Day2 extends RegexParsers {
     )
      
     lazy val hasTwoRepeated: Boolean = toMap.values.count(_ == 2) > 0
-    
     lazy val hasThreeRepeated: Boolean = toMap.values.count(_ == 3) > 0
     
     override def equals(that: Any): Boolean = {
@@ -50,7 +49,7 @@ object Day2 extends RegexParsers {
   case class BoxID(asString: String) {
     require( asString.forall( c => ALPHABET.contains(c) ) )
     
-    def charCount: CharCount = 
+    lazy val charCount: CharCount = 
       asString.toList.map(CharCount.from).foldLeft(CharCount.empty)(_ + _)
 
     /**
@@ -60,7 +59,6 @@ object Day2 extends RegexParsers {
       n <- 0 to asString.length
       c <- ALPHABET
     } yield BoxID( asString.take(n) + c + asString.drop(n+1) ) 
-
   }
   
   
@@ -83,7 +81,7 @@ object Day2 extends RegexParsers {
     val idSet: Set[BoxID] = Set() ++ ids
     val results = for {
       id <- ids
-      neighbors = id.neighbors.filter(n => idSet.contains(n) && n != id)
+      neighbors = id.neighbors.filter(n => n != id && idSet.contains(n))
       if (!neighbors.isEmpty)
     } yield (id,neighbors.head)
     results.headOption

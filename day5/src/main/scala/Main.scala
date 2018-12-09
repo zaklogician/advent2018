@@ -85,8 +85,9 @@ object Day5 {
    * remainder. Solves Part 2.
    */
   def eliminatedSize(polymer: Polymer): Int = {
+    val reduced = reduce(polymer).toPolymer
     PTYPES.map { t =>
-      reduce( polymer.filter(p => ptype(p) != t) ).toPolymer.length
+      reduce( reduced.filter(p => ptype(p) != t) ).toPolymer.length
     }.min
   }
   
